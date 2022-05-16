@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post 'profiles/new', to: 'profiles#create'
   post '/', to: 'profiles#create'
   resources :profiles
+
+  resources :feedbacks
 end
