@@ -12,14 +12,10 @@ class ProfilesController < ApplicationController
     @profiles = Profile.new
   end
 
-  def listing
-    @profiles = Profile.all
-  end
-
   def create
-      profile = Profile.new(profile_params)
-      profile.save!
-      redirect_to profile
+    profile = Profile.new(profile_params)
+    profile.save!
+    redirect_to profile
   end
 
   def edit
@@ -32,7 +28,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to profile_listing_path
+    redirect_to profiles_path
   end
 
   private
@@ -42,7 +38,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    return params.require(:profile).permit(:name, :phone_number, :australian_state)
+    return params.permit(:name, :phone_number, :australian_state)
   end
 end
 

@@ -1,2 +1,10 @@
-<h1>Profiles Show</h1>
+<h1>Profile Details</h1>
+    <p><b><u>Name:</u></b> <%= @profile.name %></p>
+    <p><b><u>Phone:</u></b> <%= @profile.phone_number %></p>
+    <p><b><u>State:</u></b> <%= @profile.australian_state %></p>
 
+<div class="btn-toolbar mt-2">
+    <%= link_to('Edit', edit_profile_path(@profile), class: 'btn btn-warning me-2') %>
+    <%= button_to('Delete', @profile, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@profile.name}' ?" } })  %>
+    <%= link_to('Back', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
+</div>
