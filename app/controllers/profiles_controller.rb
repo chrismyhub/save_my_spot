@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    profile = current_user.build_profile(profile_params)
+    profile = current_user.build_profile(profile_params2)
     profile.save!
     redirect_to profile
   end
@@ -38,7 +38,11 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    return params.permit(:name, :phone_number, :australian_state)
+    return params.require(:profile).permit(:name, :phone_number, :australian_state, :user_id)
+  end
+
+  def profile_params2
+    return params.permit(:name, :phone_number, :australian_state, :user_id)
   end
 end
 
