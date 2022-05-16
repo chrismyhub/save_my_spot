@@ -1,0 +1,19 @@
+
+<%= form_with(model: @profile, data: {turbo: false}) do |f| %>
+  <fieldset class="mb-2">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :australian_state %>
+    <%= f.text_field :australian_state %>
+  </fieldset>
+    <fieldset>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to('Cancel', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
+  </fieldset>
+<% end %>
