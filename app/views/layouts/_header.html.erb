@@ -13,10 +13,7 @@
               <%= link_to 'New Request', root_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'User Feedback', root_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'My Profile', root_path, class: 'nav-link' %>
+              <%= link_to 'User Feedback', profiles_path, class: 'nav-link' %>
             </li>
           </ul>
           <% if user_signed_in? %>

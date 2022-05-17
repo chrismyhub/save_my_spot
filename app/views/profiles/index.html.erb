@@ -1,12 +1,11 @@
 <center>
-<h1>Profiles Index</h1>
+<h1>User Feedback</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Phone Number</th>
       <th scope="col">State</th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
         <tr>
         <th scope="row"><%= profile.id %></th>
         <td scope="row"><%= link_to profile.name, profile %></td>
-        <td scope="row"><%= profile.phone_number %></td>
         <td scope="row"><%= profile.australian_state %></td>
         </tr>
         <% end %>

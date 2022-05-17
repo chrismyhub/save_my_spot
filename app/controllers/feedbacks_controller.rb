@@ -3,11 +3,11 @@ class FeedbacksController < ApplicationController
         @profile = Profile.find(params[:profile_id])
         @feedback = @profile.feedbacks.build(feedback_params)
         @feedback.user_id = current_user.id
-        @feedback.save!
-        #     redirect_to @profile
-        # else
-        #     redirect_to @profile, notice: "did not save!"
-        # end
+        if @feedback.save!
+            redirect_to @profile
+        else
+            redirect_to @profile, notice: "did not save!"
+        end
     
     end
 
