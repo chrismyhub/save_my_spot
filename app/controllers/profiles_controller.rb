@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @feedbacks = Feedback.where("profile_id = ?", params[:id])
   end
 
   def new

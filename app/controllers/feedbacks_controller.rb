@@ -8,6 +8,11 @@ class FeedbacksController < ApplicationController
         @profile = Profile.find(params[:profile_id])
         @feedback = @profile.feedback.build(comment_params)
         @feedback.user_id  = current_user.id
+        if @feedback.save
+            redirect_to @profile
+        else
+            redirect_to @profile, notice: "did not save!"
+        end
     end
 
     def destroy
