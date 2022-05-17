@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
         @feedback = @profile.feedbacks.build(feedback_params)
         @feedback.user_id = current_user.id
         if @feedback.save!
-            redirect_to @profile
+            redirect_to @profile, notice: "successfully posted!"
         else
             redirect_to @profile, notice: "did not save!"
         end

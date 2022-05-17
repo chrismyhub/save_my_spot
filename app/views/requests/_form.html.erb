@@ -1,0 +1,36 @@
+
+<%= form_with(model: @request, data: {turbo: false}) do |f| %>
+  <fieldset class="mb-2">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <p>State:
+        <%= f.select :australian_state, [['NSW','NSW'],['VIC','VIC'],['SA','SA'],['WA','WA'],['QLD','QLD'],['NT','NT'],['TAS','TAS'],['ACT','ACT']] %>
+    </p>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :date %>(yyyy-mm-dd)<br>
+    <%= f.text_field :date %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :reward %>($)<br>
+    <%= f.text_field :reward %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :no_show_penalty %>($)<br>
+    <%= f.text_field :no_show_penalty %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </fieldset>
+    <fieldset>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to('Cancel', requests_path(@request), class: 'btn btn-secondary me-2') %>
+  </fieldset>
+<% end %>

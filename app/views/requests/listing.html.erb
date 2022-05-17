@@ -1,2 +1,21 @@
-<h1>Requests#listing</h1>
-<p>Find me in app/views/requests/listing.html.erb</p>
+<center>
+<h1>Current Listings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Location</th>
+      <th scope="col">State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+        <tr>
+        <th scope="row"><%= request.id %></th>
+        <td scope="row"><%= link_to request.location, request %></td>
+        <td scope="row">NSW</td>
+        </tr>
+        <% end %>
+  </tbody>
+</table>
