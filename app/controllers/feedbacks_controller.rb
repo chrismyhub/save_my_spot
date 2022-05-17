@@ -1,18 +1,14 @@
 class FeedbacksController < ApplicationController
-
-    def index
-      @feedbacks = Feedback.all
-    end
-
     def create  
         @profile = Profile.find(params[:profile_id])
-        @feedback = @profile.feedback.build(comment_params)
-        @feedback.user_id  = current_user.id
-        if @feedback.save
-            redirect_to @profile
-        else
-            redirect_to @profile, notice: "did not save!"
-        end
+        @feedback = @profile.feedbacks.build(feedback_params)
+        @feedback.user_id = current_user.id
+        @feedback.save!
+        #     redirect_to @profile
+        # else
+        #     redirect_to @profile, notice: "did not save!"
+        # end
+    
     end
 
     def destroy
@@ -21,6 +17,6 @@ class FeedbacksController < ApplicationController
     private
 
     def feedback_params
-        params.require(:feedback).permit(:feedback)
+        params.require(:feedback).permit(:comment, :rating, :user_id, :profile_id)
     end
 end

@@ -14,12 +14,19 @@
 <br>
 <h2>Feedback</h2>
 <br>
-<%= form_with(model: [@profile, @profile.feedback.build]) do |f| %>
-    <%= f.text_area :comments, placeholder: "write feedback here" %><br>
+<%= form_with(model: [@profile, @profile.feedbacks.build], data: {turbo: false}) do |f| %>
+    <%= f.text_area :comment, placeholder: "write feedback here" %><br>
+    <%= f.text_field :rating, placeholder: "write rating here" %><br>
     <%= f.submit "Submit", class: 'btn btn-primary me-2' %>
 <% end %>
 
 <br>
 <hr>
-
-
+<% @feedbacks.each do |feedback| %>
+    <h5>
+        <strong><%= feedback.user.profile.name %></strong> wrote <small><%= time_ago_in_words(feedback.created_at) %> ago</small>
+    </h5>
+    <h3>
+        <%= feedback.comment %>
+    </h3>
+<% end %>
