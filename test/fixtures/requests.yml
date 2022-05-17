@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  australian_state: MyString
+  date: MyString
+  time: MyString
+  reward: 1.5
+  no_show_penalty: 1.5
+  comments: MyString
+
+two:
+  location: MyString
+  australian_state: MyString
+  date: MyString
+  time: MyString
+  reward: 1.5
+  no_show_penalty: 1.5
+  comments: MyString
