@@ -9,8 +9,10 @@
     <%= f.text_field :phone_number %>
   </fieldset>
   <fieldset class="mb-2">
-    <%= f.label :australian_state %>
-    <%= f.text_field :australian_state %>
+  <p>Please select your state:
+        <%= f.select :australian_state, [['NSW','NSW'],['VIC','VIC'],['SA','SA'],['WA','WA'],['QLD','QLD'],['NT','NT'],['TAS','TAS'],['ACT','ACT']] %>
+    </p>
+
   </fieldset>
     <fieldset>
     <%= f.submit class: "btn btn-primary" %>
