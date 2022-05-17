@@ -7,4 +7,6 @@ class Profile < ApplicationRecord
     validates :user_id, presence: true
 
     has_many :feedbacks, dependent: :destroy
+    has_many :requests
+    
 end

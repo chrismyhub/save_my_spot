@@ -19,7 +19,15 @@ class RequestsController < ApplicationController
   def create
     # @profile = Profile.find(params[:profile_id])
     # @request = @profile.request.build(request_params)
-    # @request.user_id = current_user.id
+    # @request.profile_id = current_profile.id
+
+    # @post = Post.find(params[:post_id])
+    # @comment = @post.comments.build(params[:comment].permit(:comment))
+    # @comment.user_id = current_user.id
+    # @comment.save!
+
+    # @request = Profile.find(params[:profile_id]).requests.new(params[:request])
+    # @requests = Request.where("profile_id = ?", params[:id])
     request = Request.new(request_params)
     if request.save!
       redirect_to request, notice: "successfully created Request!"
@@ -48,6 +56,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments, :profile_id)
+    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments)
   end
 end
