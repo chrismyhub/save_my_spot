@@ -8,3 +8,14 @@
     <%= button_to('Delete', @profile, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@profile.name}' ?" } })  %>
     <%= link_to('Back', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
 </div>
+
+
+<br>
+<br>
+<h2>Feedback</h2>
+<br>
+<%= form_with(model: [@profile, @profile.feedback.build]) do |f| %>
+    <%= f.text_area :comments, placeholder: "write feedback here" %><br>
+    <%= f.submit "Submit", class: 'btn btn-primary me-2' %>
+<% end %>
+

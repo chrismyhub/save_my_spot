@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_16_133948) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_16_160506) do
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.integer "user_id"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_feedbacks_on_profile_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
