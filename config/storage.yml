@@ -12,6 +12,7 @@ cloudinary:
   api_key: 682488815261441
   api_secret: T5kcxY9oEpKAQOfcx4qR3_WrxIU
 
+
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

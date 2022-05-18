@@ -57,6 +57,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments, :profile_id)
+    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments, :profile_id, :image)
   end
 end
