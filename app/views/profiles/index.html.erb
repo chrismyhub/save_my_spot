@@ -17,8 +17,8 @@
         <th scope="row"><%= profile.id %></th>
         <td scope="row"><%= link_to profile.name, profile %></td>
         <td scope="row"><%= profile.australian_state %></td>
-        <td scope="row"><%= profile.created_at %></td>
-        <td scope="row"><%= profile.updated_at%></td>
+        <td scope="row"><%= profile.created_at.to_time.strftime("Created on %d/%m/%Y at %l:%M %p") %></td>
+        <td scope="row"><%= profile.updated_at.to_time.strftime("Updated on %d/%m/%Y at %l:%M %p") %></td>
         </tr>
         <% end %>
   </tbody>
