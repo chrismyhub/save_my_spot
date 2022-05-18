@@ -7,8 +7,10 @@
     <p><b><u>Reward:</u></b> $<%= "%.2f" % @request.reward %></p>
     <p><b><u>No show penalty:</u></b> $<%= "%.2f" %  @request.no_show_penalty %></p>
     <p><b><u>Comments:</u></b> <%= @request.comments %></p>
-
-    <%# <p><%= image_tag @request.image, width: 300 %></p> %>
+    <% if @request.image.attached? %>
+        <%= image_tag @request.image, width: 300 %>
+    <% end %>
+    
 
 
 <div class="btn-toolbar mt-2">
