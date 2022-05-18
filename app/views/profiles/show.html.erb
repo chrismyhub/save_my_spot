@@ -26,7 +26,7 @@
 <hr>
 <% @feedbacks.order(created_at: :desc).each do |feedback| %>
     <h9>
-        <strong><%= feedback.user.profile.name %></strong> wrote <small><%= time_ago_in_words(feedback.created_at) %> ago</small>
+        <strong><%= link_to feedback.user.profile.name, feedback.user.profile %></strong> wrote <small><%= time_ago_in_words(feedback.created_at) %> ago</small>
     </h9>
     <p>
         <i>Rating: <%= feedback.rating %>/5 stars<br></i>
