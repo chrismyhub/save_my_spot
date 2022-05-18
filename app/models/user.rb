@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
-  # has_many :requests, dependent: :destroy
+
 end

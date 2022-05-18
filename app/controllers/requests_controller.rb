@@ -42,7 +42,10 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    # @request.image.purge
     @request.destroy
+    # authorize @request
+    # @request.destroy
     redirect_to requests_listing_path
   end
 
