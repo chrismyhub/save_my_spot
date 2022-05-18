@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy, :edit]
+  before_action :set_user, only: [:new, :edit]
 
   def index
     @requests = Request.all
@@ -17,10 +18,15 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @profile = Profile.find(params[:id])
-    @request = @profile.requests.build(request_params)
-    @request.save!
+    @request = Request.create!(request_params)
     redirect_to @request
+    # p'=============================='
+    # p params
+    # p'=============================='
+    # @profile = Profile.find(params[:id])
+    # @request = @profile.requests.build(request_params)
+    # @request.save!
+    # redirect_to @request
       #   redirect_to request, notice: "successfully created Request!"
       # else
       #   redirect_to request, notice: "Request not created!"
@@ -41,6 +47,10 @@ class RequestsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @profile_id = current_user.profile.id
+  end
 
   def set_request
     @request = Request.find(params[:id])

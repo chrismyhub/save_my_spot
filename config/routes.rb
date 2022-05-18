@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  post 'requests/new', to: 'requests#new'
+  post 'requests/new', to: 'requests#create'
   get 'requests/new', to: 'requests#new'
   get 'requests/listing', to: 'requests#listing'
   get 'requests/:id', to: 'requests#show'

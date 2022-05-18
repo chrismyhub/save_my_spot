@@ -1,4 +1,5 @@
 <%= form_with(model: @request, data: {turbo: false}) do |f| %>
+<%= f.hidden_field :profile_id, value: @profile_id %>
 
   <fieldset class="mb-2">
     <%= f.label :location %><br>
