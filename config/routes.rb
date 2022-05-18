@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :requests, except: [:listing, :id]
 
   root 'requests#index'
-
   post 'profiles/new', to: 'profiles#create'
   post '/', to: 'profiles#create'
   resources :profiles do

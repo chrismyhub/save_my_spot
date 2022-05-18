@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :set_request, only: [:show, :update, :destroy, :edit]
 
   def index
@@ -18,32 +17,14 @@ class RequestsController < ApplicationController
   end
 
   def create
-    # @profile = Profile.find(params[:profile_id])
-    # @request = @profile.request.build(request_params)
-    # @request.profile_id = current_profile.id
-
-    # @post = Post.find(params[:post_id])
-    # @comment = @post.comments.build(params[:comment].permit(:comment))
-    # @comment.user_id = current_user.id
-    # @comment.save!
-
-    # @request = Profile.find(params[:profile_id]).requests.new(params[:request])
-    # @requests = Request.where("profile_id = ?", params[:id])
-    # request = Request.new(request_params)
-
-    # @profile = Profile.find(params[:profile_id])
-    # @request = current_user.requests.build(request_params)
-    # @request.profile_id = @profile.id
-
-    # @profile = Profile.find(params[:profile_id])
-    @profile = Profile.where("profile_id = ?", params[:id])
-    @request = current_user.requests.build(request_params)
-    @request.profile_id = @profile.id
-      if @request.save!
-        redirect_to request, notice: "successfully created Request!"
-      else
-        redirect_to request, notice: "Request not created!"
-      end
+    @profile = Profile.find(params[:id])
+    @request = @profile.requests.build(request_params)
+    @request.save!
+    redirect_to @request
+      #   redirect_to request, notice: "successfully created Request!"
+      # else
+      #   redirect_to request, notice: "Request not created!"
+      # end
   end
 
   def edit
