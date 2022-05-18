@@ -18,7 +18,7 @@
           </ul>
           <% if user_signed_in? %>
             <div class="ml-auto btn-toolbar p-3">
-              Welcome, <%= current_user.email %>!
+              Welcome, <%= current_user.profile.name %>!
             </div>
             <% if current_user.profile == nil %>
                 <div class="nav-item">

@@ -20,17 +20,6 @@ class RequestsController < ApplicationController
   def create
     @request = Request.create!(request_params)
     redirect_to @request
-    # p'=============================='
-    # p params
-    # p'=============================='
-    # @profile = Profile.find(params[:id])
-    # @request = @profile.requests.build(request_params)
-    # @request.save!
-    # redirect_to @request
-      #   redirect_to request, notice: "successfully created Request!"
-      # else
-      #   redirect_to request, notice: "Request not created!"
-      # end
   end
 
   def edit
@@ -42,10 +31,9 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    #NOTE: purge doesn't seem to be working.
     # @request.image.purge
     @request.destroy
-    # authorize @request
-    # @request.destroy
     redirect_to requests_listing_path
   end
 

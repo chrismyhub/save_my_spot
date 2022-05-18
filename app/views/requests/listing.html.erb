@@ -1,3 +1,4 @@
+
 <center>
 <h1>Current Listings</h1>
 
@@ -16,7 +17,7 @@
         <tr>
         <th scope="row"><%= request.id %></th>
         <td scope="row"><%= link_to request.location, request %></td>
-        <td scope="row">NSW</td>
+        <td scope="row"><%= request.australian_state%></td> 
         <td scope="row"><%= request.created_at.strftime("Created on %d/%m/%Y at %l:%M %p") %></td>
         <td scope="row"><%= request.updated_at.strftime("Updated on %d/%m/%Y at %l:%M %p") %></td>
         </tr>
