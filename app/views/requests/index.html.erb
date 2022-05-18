@@ -1,3 +1,11 @@
+<% if user_signed_in? %>
+<center>
+<br>
+<br>
+    <%= link_to 'Current Listings', requests_listing_path, class: 'btn btn-primary' %>
+</center>
+
+<% else %>
 <center>
     <h1>Welcome to <br><i>"Save my Spot!"</i></h1>
     <p>Please sign up or login to continue</p>
@@ -6,3 +14,4 @@
     <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-secondary' %>
     <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
 </center>
+<% end %>
