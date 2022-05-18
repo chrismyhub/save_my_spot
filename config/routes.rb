@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
+  post 'requests/new', to: 'requests#new'
   get 'requests/new', to: 'requests#new'
   get 'requests/listing', to: 'requests#listing'
   get 'requests/:id', to: 'requests#show'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   post '/', to: 'profiles#create'
   resources :profiles do
     resources :feedbacks
+    resources :requests
   end
 
 

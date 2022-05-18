@@ -24,7 +24,7 @@
 
 <br>
 <hr>
-<% @feedbacks.each do |feedback| %>
+<% @feedbacks.order(created_at: :desc).each do |feedback| %>
     <h9>
         <strong><%= feedback.user.profile.name %></strong> wrote <small><%= time_ago_in_words(feedback.created_at) %> ago</small>
     </h9>

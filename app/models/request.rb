@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
-    belongs_to :profile, optional: true
+    belongs_to :profile
+    # belongs_to :profile, optional: true
     # belongs_to :vehicle
     
     validates :location, presence: true
