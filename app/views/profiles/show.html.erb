@@ -52,7 +52,7 @@
     <p>
         <%= feedback.comment %><br>
             <% if feedback.user.profile.name == current_user.profile.name %>
-                <%= button_to 'Delete',  profile_feedback_path(feedback.profile, feedback), class: 'btn btn-danger me-2',   method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete feedback?" } } %>
+                <%= button_to 'Delete',  profile_feedback_path(feedback.profile, feedback), class: "btn btn-outline-danger",   method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete feedback?" } } %>
             <% else %>
 
             <% end %>

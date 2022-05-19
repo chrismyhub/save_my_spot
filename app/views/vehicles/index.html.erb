@@ -1,11 +1,11 @@
 <center>
     <h1><%= @profile.name %>'s Vehicles</h1>
+    <%= link_to('Add Vehicle', new_vehicle_path(@vehicle), class: 'btn btn-info me-2') %>
 
     <table class="table">
     <thead>
         <tr>
         <th scope="col">#</th>
-        <th scope="col">Profile Name</th>
         <th scope="col">License Plate</th>
         <th scope="col">Vehicle Type</th>
         <th scope="col">Make</th>
@@ -20,7 +20,6 @@
             <% if vehicle.profile_id == @profile.id %>
                 <tr>
                 <td scope="row"><%= vehicle.id %></td>
-                <td scope="row"><%= vehicle.profile_id %></td>
                 <td scope="row"><%= link_to vehicle.license_plate, vehicle %></td>
                 <td scope="row"><%= vehicle.vehicle_type  %></td> 
                 <td scope="row"><%= vehicle.make %></td>

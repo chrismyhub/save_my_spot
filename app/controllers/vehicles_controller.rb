@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.create!(vehicle_params)
+    @vehicle = Vehicle.create!(vehicle_params2)
     redirect_to vehicles_url
   end
 
@@ -50,6 +50,10 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     return params.require(:vehicle).permit(:vehicle_type, :color, :license_plate, :make, :year, :comments, :vehicle_id)
+  end
+
+  def vehicle_params2
+    return params.require(:vehicle).permit(:vehicle_type, :color, :license_plate, :make, :year, :comments, :vehicle_id, :profile_id)
   end
 
 end
