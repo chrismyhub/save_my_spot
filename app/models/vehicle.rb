@@ -7,5 +7,4 @@ class Vehicle < ApplicationRecord
     validates :license_plate, presence: true
     validates :make, presence: true
     validates :year, presence: true, length: { maximum: 4 }
-    validates :comments
 end

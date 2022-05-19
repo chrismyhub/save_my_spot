@@ -1,11 +1,15 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, nly: [:show, :update, :destroy, :edit]
+  before_action :set_vehicle, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:show, :destroy]
 
   def index
   end
 
   def show
+  end
+
+  def new
+    @vehicle = Vehicle.new
   end
 
   def create
@@ -35,7 +39,7 @@ class VehiclesController < ApplicationController
   end
 
   def set_vehicle
-    @request = Request.find(params[:id])
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def vehicle_params
