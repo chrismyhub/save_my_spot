@@ -17,18 +17,25 @@
 
 <br>
 <br>
+<% if @profile.name == current_user.profile.name %>
+               
+<% else %>
 <h2>Feedback</h2>
 <br>
-<%= form_with(model: [@profile, @profile.feedbacks.build], data: {turbo: false}) do |f| %>
-    <%= f.text_area :comment, placeholder: "write feedback here" %><br>
-    <p>Please select Rating:
-        <%= f.select :rating, [['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
-    </p>
-    <%= f.submit "Submit", class: 'btn btn-primary me-2' %>
-<% end %>
-
+    <%= form_with(model: [@profile, @profile.feedbacks.build], data: {turbo: false}) do |f| %>
+        <%= f.text_area :comment, placeholder: "write feedback here" %><br>
+        <p>Please select Rating:
+            <%= f.select :rating, [['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
+        </p>
+        <%= f.submit "Submit", class: 'btn btn-primary me-2' %>
+    <% end %>
 <br>
 <hr>
+<% end %>
+
+
+
+
 <% @feedbacks.order(created_at: :desc).each do |feedback| %>
     <h9>
         <strong><%= link_to feedback.user.profile.name, feedback.user.profile %></strong> wrote <small><%= time_ago_in_words(feedback.created_at) %> ago</small>

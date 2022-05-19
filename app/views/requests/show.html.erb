@@ -8,13 +8,15 @@
     <p><b><u>No show penalty:</u></b> $<%= "%.2f" %  @request.no_show_penalty %></p>
     <p><b><u>Comments:</u></b> <%= @request.comments %></p>
     <% if @request.image.attached? %>
-        <%= image_tag @request.image, width: 300 %>
+        <%= image_tag @request.image, width: 300 %><br><br>
     <% end %>
-    
 
-
-<div class="btn-toolbar mt-2">
+<% if @request.profile.name == current_user.profile.name %>
+   <div class="btn-toolbar mt-2">
     <%= link_to('Edit', edit_request_path(@request), class: 'btn btn-warning me-2') %>
     <%= button_to('Delete', @request, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@request.location}' ?" } })  %>
     <%= link_to('Back to Listings', requests_listing_path(@request), class: 'btn btn-secondary me-2') %>
 </div>
+<% else %>
+    <%= link_to('Back to Listings', requests_listing_path(@request), class: 'btn btn-secondary me-2') %>
+<% end %>
