@@ -4,9 +4,14 @@
     <p><b>State:</b> <%= @profile.australian_state %></p>
 
 <div class="btn-toolbar mt-2">
-    <%= link_to('Edit', edit_profile_path(@profile), class: 'btn btn-warning me-2') %>
-    <%= button_to('Delete', @profile, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@profile.name}' ?" } })  %>
-    <%= link_to('Back', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
+    <% if @profile.name == current_user.profile.name %>
+        <%= link_to('Edit', edit_profile_path(@profile), class: 'btn btn-warning me-2') %>
+        <%= button_to('Delete', @profile, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@profile.name}' ?" } })  %>
+        <%= link_to('Back', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
+    <% else %>
+        <%= link_to('Back', profiles_path(@profile), class: 'btn btn-secondary me-2') %>
+    <% end %>
+
 </div>
 
 
@@ -32,7 +37,15 @@
         <i>Rating: <%= feedback.rating %>/5 stars<br></i>
     </p>
     <p>
-        <%= feedback.comment %>
+        <%= feedback.comment %><br>
+            <% if feedback.user.profile.name == current_user.profile.name %>
+                <%= button_to 'Delete',  profile_feedback_path(feedback.profile, feedback), class: 'btn btn-danger me-2',   method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete feedback?" } } %>
+            <% else %>
+
+            <% end %>
+        
     </p>
     <hr>
 <% end %>
+
+        
