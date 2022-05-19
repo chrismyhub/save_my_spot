@@ -1,9 +1,0 @@
-<h2>Edit Feedback</h2>
-<br>
-<%= form_with(model: [@profile, @profile.feedbacks.build], data: {turbo: false}) do |f| %>
-    <%= f.text_area :comment, placeholder: "write feedback here" %><br>
-    <p>Please select Rating:
-        <%= f.select :rating, [['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
-    </p>
-    <%= f.submit "Submit", class: 'btn btn-primary me-2' %>
-<% end %>

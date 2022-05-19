@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'vehicles/index'
+  get 'vehicles/show'
 
   devise_for :users
 

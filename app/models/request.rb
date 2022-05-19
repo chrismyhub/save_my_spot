@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
     belongs_to :profile
+    has_one :vehicle
 
     validates :location, presence: true
     validates :australian_state, presence: true, length: { maximum: 3 }
