@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_034640) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_055019) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -86,7 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_034640) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "type"
     t.string "color"
     t.string "license_plate"
     t.string "make"
@@ -96,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_034640) do
     t.integer "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "vehicle_type"
     t.index ["profile_id"], name: "index_vehicles_on_profile_id"
     t.index ["request_id"], name: "index_vehicles_on_request_id"
   end
