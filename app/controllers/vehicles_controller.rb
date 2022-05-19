@@ -1,14 +1,13 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :update, :destroy, :edit]
-  before_action :set_user, only: [:show, :destroy, :create, :new, :index]
+  before_action :set_user, only: [:show, :create, :new, :index]
+  before_action :find_profile, only: [:index, :show, :create]
 
   def index
     @vehicles = Vehicle.all
-    @profile = Profile.find(@profile_id)
   end
 
   def show
-    @profile = Profile.find(@profile_id)
   end
 
   def new
@@ -16,7 +15,6 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @profile = Profile.find(@profile_id)
     @vehicle = Vehicle.create!(vehicle_params)
     redirect_to vehicles_url
   end
@@ -26,18 +24,21 @@ class VehiclesController < ApplicationController
 
   def update
     @vehicle.update(vehicle_params)
-    redirect_to @vehicle
+    redirect_to vehicle_path
   end
 
   def destroy
     # @profile = Profile.find(params[:profile_id])
     # @vehicle = @profile.find(params[:id])
-    @vehicle.destroy
-    redirect_to vehicles_url
+    @vehicle.destroy!
+    redirect_to vehicles_path
   end
 
 
  private
+  def find_profile
+    @profile = Profile.find(@profile_id)
+  end
 
   def set_user
     @profile_id = current_user.profile.id
@@ -48,7 +49,7 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    return params.require(:vehicle).permit(:vehicle_type, :color, :license_plate, :make, :year, :comments, :profile_id)
+    return params.require(:vehicle).permit(:vehicle_type, :color, :license_plate, :make, :year, :comments, :vehicle_id)
   end
 
 end

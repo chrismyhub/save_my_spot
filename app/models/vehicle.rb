@@ -1,5 +1,5 @@
 class Vehicle < ApplicationRecord
-    belongs_to :profile, dependent: :destroy
+    belongs_to :profile
     has_many :requests
 
     # validates :vehicle_type, presence: true
