@@ -1,3 +1,17 @@
-<h1>Vehicles</h1>
+<h1>Vehicle Details</h1>
+    <p><b><u>License Plate:</u></b> <%= @vehicle.license_plate %></p>
+    <p><b><u>Vehicle Type:</u></b> <%= @vehicle.vehicle_type %></p>
+    <p><b><u>Make:</u></b> <%= @vehicle.make %></p>
+    <p><b><u>Year:</u></b> <%= @vehicle.year %></p>
+    <p><b><u>Color:</u></b> <%= @vehicle.color %></p>
+    <p><b><u>Comments:</u></b> <% @vehicle.comments %></p>
 
-<%= render 'form' %>
+<% if @vehicle.profile.name == current_user.profile.name %>
+   <div class="btn-toolbar mt-2">
+    <%= link_to('Edit', edit_vehicle_path(@vehicle), class: 'btn btn-warning me-2') %>
+    <%= button_to('Delete', @vehicle, class: 'btn btn-danger me-2', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@vehicle.license_plate}' ?" } })  %>
+    <%= link_to('Back', vehicles_path(@vehicle), class: 'btn btn-secondary me-2') %>
+</div>
+<% else %>
+    <%= link_to('Back', vehicles_path(@vehicle), class: 'btn btn-secondary me-2') %>
+<% end %>

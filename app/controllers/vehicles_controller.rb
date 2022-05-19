@@ -18,7 +18,7 @@ class VehiclesController < ApplicationController
   def create
     @profile = Profile.find(@profile_id)
     @vehicle = Vehicle.create!(vehicle_params)
-    redirect_to @vehicle
+    redirect_to vehicles_url
   end
 
   def edit
@@ -30,9 +30,10 @@ class VehiclesController < ApplicationController
   end
 
   def destroy
-    @profile = Profile.find(@profile_id)
+    # @profile = Profile.find(params[:profile_id])
+    # @vehicle = @profile.find(params[:id])
     @vehicle.destroy
-    redirect_to @profile
+    redirect_to vehicles_url
   end
 
 

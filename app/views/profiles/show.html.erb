@@ -2,6 +2,10 @@
     <p><b>Name:</b> <%= @profile.name %></p>
     <p><b>Phone:</b> <%= @profile.phone_number %></p>
     <p><b>State:</b> <%= @profile.australian_state %></p>
+    <% if @profile.name == current_user.profile.name %>
+        <p><b>Vehicles:</b> <%= link_to('Vehicles', vehicles_path(@profile), class: "btn btn-outline-primary") %></p>
+    <% else %>
+    <% end %>
 
 <div class="btn-toolbar mt-2">
     <% if @profile.name == current_user.profile.name %>
@@ -14,9 +18,7 @@
 
 </div>
 
-   <%=  p "===============" %>
-   <%=  p current_user.profile.vehicles %>
-   <%=  p "===============" %>
+ 
 
 
 <br>
