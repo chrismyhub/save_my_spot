@@ -1,11 +1,14 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :update, :destroy, :edit]
-  before_action :set_user, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy, :create, :new, :index]
 
   def index
+    @vehicles = Vehicle.all
+    @profile = Profile.find(@profile_id)
   end
 
   def show
+    @profile = Profile.find(@profile_id)
   end
 
   def new
@@ -13,6 +16,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
+    @profile = Profile.find(@profile_id)
     @vehicle = Vehicle.create!(vehicle_params)
     redirect_to @vehicle
   end
@@ -26,6 +30,7 @@ class VehiclesController < ApplicationController
   end
 
   def destroy
+    @profile = Profile.find(@profile_id)
     @vehicle.destroy
     redirect_to @profile
   end
@@ -35,7 +40,6 @@ class VehiclesController < ApplicationController
 
   def set_user
     @profile_id = current_user.profile.id
-    @profile = Profile.find(params[:profile_id])
   end
 
   def set_vehicle
@@ -43,7 +47,7 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    return params.require(:vehicle).permit(:type, :color, :license_plate, :make, :year, :comments, :profile_id, :request_id)
+    return params.require(:vehicle).permit(:vehicle_type, :color, :license_plate, :make, :year, :comments, :profile_id)
   end
 
 end
