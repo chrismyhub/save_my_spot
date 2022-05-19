@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'vehicles/index'
-  get 'vehicles/show'
+  resources :vehicles
 
   devise_for :users
 
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   resources :profiles do
     resources :feedbacks
     resources :requests
+    resources :vehicles
   end
 
 
