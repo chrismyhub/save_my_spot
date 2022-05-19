@@ -7,7 +7,7 @@ one:
   make: MyString
   year: 1
   comments: MyString
-  profile_is: 1
+  profile_id: 1
   request_id: 1
 
 two:
@@ -17,5 +17,5 @@ two:
   make: MyString
   year: 1
   comments: MyString
-  profile_is: 1
+  profile_id: 1
   request_id: 1

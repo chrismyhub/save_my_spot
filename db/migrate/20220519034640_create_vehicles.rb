@@ -7,12 +7,12 @@ class CreateVehicles < ActiveRecord::Migration[7.0]
       t.string :make
       t.integer :year
       t.string :comments
-      t.integer :profile_is
+      t.integer :profile_id
       t.integer :request_id
 
       t.timestamps
     end
-    add_index :vehicles, :profile_is
+    add_index :vehicles, :profile_id
     add_index :vehicles, :request_id
   end
 end
