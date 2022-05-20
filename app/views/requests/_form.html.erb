@@ -2,6 +2,11 @@
 <%= f.hidden_field :profile_id, value: @profile_id %>
 
   <fieldset class="mb-2">
+    <% f.label :vehicle_id %><br>
+    <% f.text_field :vehicle_id %>
+  </fieldset>
+
+  <fieldset class="mb-2">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </fieldset>

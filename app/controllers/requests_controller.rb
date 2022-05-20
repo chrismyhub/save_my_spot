@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:new, :edit]
+  before_action :find_profile, only: [:edit]
 
   def index
     @requests = Request.all
@@ -23,6 +24,7 @@ class RequestsController < ApplicationController
   end
 
   def edit
+    @vehicles = Vehicle.all
   end
 
   def update
@@ -39,6 +41,10 @@ class RequestsController < ApplicationController
 
   private
 
+  def find_profile
+    @profile = Profile.find(@profile_id)
+  end
+
   def set_user
     @profile_id = current_user.profile.id
   end
@@ -48,6 +54,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments, :profile_id, :image)
+    return params.require(:request).permit(:location, :australian_state, :date, :time, :reward, :no_show_penalty, :comments, :profile_id, :vehicle_id, :image)
   end
 end

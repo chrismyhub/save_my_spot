@@ -2,6 +2,90 @@
 <h1>Edit Request</h1>
 
 <%= render 'form' %>
+
 <% else %>
-Please choose a vehicle to accept this request with
+<h5>Please enter the Vehicle ID you wish to use for this request:</h5>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Vehicle ID</th>
+            <th scope="col">License Plate</th>
+            <th scope="col">Vehicle Type</th>
+            <th scope="col">Make</th>
+            <th scope="col">Year</th>
+            <th scope="col">Color</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @vehicles.each do |vehicle| %>
+            <% if vehicle.profile_id == @profile.id %>
+                <tr>
+                    <td scope="row"><%= vehicle.id%></td>
+                    <td scope="row"><%= vehicle.license_plate%></td>
+                    <td scope="row"><%= vehicle.vehicle_type  %></td> 
+                    <td scope="row"><%= vehicle.make %></td>
+                    <td scope="row"><%= vehicle.year %></td>
+                    <td scope="row"><%= vehicle.color %></td>
+                    <td scope="row"><%= link_to('Select', requests_listing_path(@request), class: 'btn btn-secondary me-2') %></td>
+                </tr>
+            <% else %>
+
+            <% end %>
+        
+
+        <% end %>
+    </tbody>
+</table>
+
+
+<%= form_with(model: @request, data: {turbo: false}) do |f| %>
+<%= f.hidden_field :profile_id, value: @profile_id %>
+
+  <fieldset class="mb-2">
+    <%= f.label :vehicle_id %><br>
+    <%= f.text_field :vehicle_id %>
+  </fieldset>
+
+  <fieldset class="mb-2">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </fieldset>
+    <fieldset class="mb-2">
+    <p>
+        <% f.select :australian_state, [['NSW','NSW'],['VIC','VIC'],['SA','SA'],['WA','WA'],['QLD','QLD'],['NT','NT'],['TAS','TAS'],['ACT','ACT']] %>
+    </p>
+  </fieldset>
+  <fieldset class="mb-2">
+    <% f.label :date %>
+    <% f.text_field :date %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <% f.label :time %>
+    <% f.text_field :time %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <% f.label :reward %>
+    <% f.text_field :reward %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <% f.label :no_show_penalty %>
+    <% f.text_field :no_show_penalty %>
+  </fieldset>
+  <fieldset class="mb-2">
+    <% f.label :comments %>
+    <% f.text_area :comments %>
+  </fieldset>
+   <fieldset class="mb-2">
+    <% f.label :image %>
+    <% f.file_field :image %>
+  </fieldset>
+    <fieldset>
+    <%= f.submit "Confirm", class: "btn btn-primary" %>
+    <%= link_to('Cancel', requests_listing_path(@request), class: 'btn btn-secondary me-2') %>
+  </fieldset>
+<% end %>
+
+
 <% end %>
