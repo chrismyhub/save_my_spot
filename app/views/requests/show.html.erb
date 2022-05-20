@@ -18,5 +18,6 @@
     <%= link_to('Back to Listings', requests_listing_path(@request), class: 'btn btn-secondary me-2') %>
 </div>
 <% else %>
+    <%= link_to('Accept Request', edit_request_path(@request), class: 'btn btn-primary me-2') %>    
     <%= link_to('Back to Listings', requests_listing_path(@request), class: 'btn btn-secondary me-2') %>
 <% end %>

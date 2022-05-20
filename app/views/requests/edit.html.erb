@@ -1,3 +1,7 @@
+<% if @request.profile.name == current_user.profile.name %>
 <h1>Edit Request</h1>
 
 <%= render 'form' %>
+<% else %>
+Please choose a vehicle to accept this request with
+<% end %>
