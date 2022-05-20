@@ -28,6 +28,7 @@
 
     <h3>Request Confirmed!</h3>
         <p><b><u>Provider's Name:</u></b> <%= @request.profile.name %></p>
+        <p><b><u>Provider's Vehicle:</u></b>  <%= @vehicle.find(@request.vehicle_id).license_plate %>, <%= @vehicle.find(@request.vehicle_id).color %>, <%= @vehicle.find(@request.vehicle_id).year%>, <%= @vehicle.find(@request.vehicle_id).make %>, <%= @vehicle.find(@request.vehicle_id).vehicle_type %></p>
         <p><b><u>Location:</u></b> <%= @request.location %></p>
         <p><b><u>Date:</u></b> <%= @request.date %></p>
         <p><b><u>Time:</u></b> <%= @request.time %></p>

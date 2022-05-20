@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:new, :edit]
   before_action :find_profile, only: [:edit]
+  before_action :find_vehicle, only: [:show]
 
   def index
     @requests = Request.all
@@ -40,6 +41,10 @@ class RequestsController < ApplicationController
   end
 
   private
+
+  def find_vehicle
+    @vehicle = Vehicle.all
+  end
 
   def find_profile
     @profile = Profile.find(@profile_id)
