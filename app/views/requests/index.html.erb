@@ -2,7 +2,14 @@
 <center>
 <br>
 <br>
-    <%= link_to 'Current Listings', requests_listing_path, class: 'btn btn-primary' %>
+    <% if current_user.profile == nil %>
+        <p>Please create your profile before proceeding further</p>
+        <%= link_to 'Create Profile', new_profile_path, class: 'btn btn-primary' %>
+    <% else %>
+        <%= link_to 'Current Listings', requests_listing_path, class: 'btn btn-primary' %>
+    <% end %>
+        
+
 </center>
 
 <% else %>
